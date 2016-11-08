@@ -24,7 +24,7 @@ namespace tic_tac_toe
 
 			basic_game() : basic_game{3,3}
 			{}
-			basic_game(size_type width, size_type heigth) : grid{3,3}
+			basic_game(size_type width, size_type heigth) : grid{width,heigth}
 			{}
 
 			player winner();
