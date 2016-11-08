@@ -1,3 +1,5 @@
+#include "grid.hpp"
+
 namespace tic_tac_toe
 {
 	enum class player
@@ -13,19 +15,37 @@ namespace tic_tac_toe
 			bool empty() const;
 			void fill();
 	};
-	class game
+
+	template<typename Grid>
+	class basic_game
 	{
 		public:
-			game();
+			using size_type = typename Grid::size_type;
+
+			basic_game() : basic_game{3,3}
+			{}
+			basic_game(size_type width, size_type heigth) : grid{3,3}
+			{}
+
 			player winner();
 
-			using size_type = std::size_t;
 
-			field& operator()(size_type x, size_type y);
-			const field& operator()(size_type x, size_type y) const;
+			field& operator()(size_type x, size_type y)
+			{
+				return grid(x, y);
+			}
+			const field& operator()(size_type x, size_type y) const
+			{
+				return grid(x, y);
+			}
+
+		private:
+			Grid grid;
 	};
 
+	using game = basic_game<grid<field>>;
+
 	std::ostream& operator<<(std::ostream&, const game&);
-} 
+} // namespace tic_tac_toe
 
 
