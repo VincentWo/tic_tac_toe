@@ -1,5 +1,6 @@
 #ifndef INCLUDE_TIC_TAC_TOE_GRID_HPP
 #define INCLUDE_TIC_TAC_TOE_GRID_HPP
+#include <cstddef>
 
 template<typename Field>
 class grid
