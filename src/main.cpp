@@ -15,7 +15,7 @@ int main()
 		auto& field = game(x,y);
 		if(field.empty())
 		{
-			field.fill();
+			field.occupy();
 		}
 		else
 		{
