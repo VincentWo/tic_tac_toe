@@ -8,7 +8,7 @@ class grid
 	public:
 		using size_type = std::size_t;
 
-		grid(size_type width, size_type heigth);
+		grid(size_type width, size_type heigth, const Field& default_field = Field{});
 
 		Field& operator()(size_type x, size_type y);
 		const Field& operator()(size_type x, size_type y) const;
