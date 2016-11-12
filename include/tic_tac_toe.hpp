@@ -17,6 +17,26 @@ namespace tic_tac_toe
 		unknown
 	};
 
+	std::ostream& operator<<(std::ostream& stream, player to_output)
+	{
+		switch(to_output)
+		{
+			case player::one:
+				stream << "Player One";
+				break;
+			case player::two:
+				stream << "Player Two";
+				break;
+			case player::none:
+				stream << "No Player";
+				break;
+			case player::unknown:
+				stream << "Unknown Player";
+				break;
+		}
+		return stream;
+	}
+
 	class basic_game_base
 	{
 		public:
