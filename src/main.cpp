@@ -27,4 +27,6 @@ int main()
 
 		std::cout << game;
 	}
+
+	std::cout << game.winner() << " has won the game!\n";
 }
