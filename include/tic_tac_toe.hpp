@@ -1,3 +1,6 @@
+#ifndef INCLUDE_TIC_TAC_TOE_TIC_TAC_TOE_HPP
+#define INCLUDE_TIC_TAC_TOE_TIC_TAC_TOE_HPP
+
 #include <algorithm>
 #include <exception>
 
@@ -310,4 +313,4 @@ namespace tic_tac_toe
 	}
 } // namespace tic_tac_toe
 
-
+#endif
