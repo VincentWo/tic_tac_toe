@@ -8,6 +8,8 @@ int main()
 
 	while(game.winner() == tic_tac_toe::player::unknown)
 	{
+		std::cout << game.current_player()  << " make your move:\n";
+
 		auto x = tic_tac_toe::game::size_type{};
 		auto y = tic_tac_toe::game::size_type{};
 		std::cin >> x >> y;
@@ -25,4 +27,6 @@ int main()
 
 		std::cout << game;
 	}
+
+	std::cout << game.winner() << " has won the game!\n";
 }
