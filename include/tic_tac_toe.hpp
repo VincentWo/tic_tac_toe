@@ -135,6 +135,15 @@ namespace tic_tac_toe
 				return player::unknown;
 			}
 
+			auto width() const
+			{
+				return grid.size1();
+			}
+
+			auto height() const
+			{
+				return grid.size2();
+			}
 
 			field& operator()(size_type x, size_type y)
 			{
@@ -315,20 +324,41 @@ namespace tic_tac_toe
 
 		return stream;
 	}
-	template<typename T>
-	inline std::ostream& operator<<(std::ostream& stream, const basic_game<T>& game)
+
+	template<typename Grid>
+	inline void print_top_delimiter(std::ostream& stream, const basic_game<Grid>& game)
 	{
+		stream << '+';
+		for(
+			auto i = typename Grid::size_type{};
+			i < game.width();
+			++i)
+		{
+			stream << '-';
+		}
+		stream << '+';
+		stream << '\n';
+	}
+	template<typename Grid>
+	inline std::ostream& operator<<(std::ostream& stream, const basic_game<Grid>& game)
+	{
+		print_top_delimiter(stream, game);
+
 		for(
 			auto row = row_begin(game);
 			row != row_end(game);
 			++row)
 		{
+			stream << '|';
 			for(const auto& field : row)
 			{
 				stream << field;
 			}
+			stream << '|';
 			stream << '\n';
 		}
+
+		print_top_delimiter(stream, game);
 		return stream;
 	}
 } // namespace tic_tac_toe
