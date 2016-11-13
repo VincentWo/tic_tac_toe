@@ -1,3 +1,5 @@
+cmake_minimum_required(VERSION 3.6)
+
 project(tic_tac_toe)
 add_executable(tic_tac_toe src/main.cpp)
 target_include_directories(tic_tac_toe PRIVATE include)
