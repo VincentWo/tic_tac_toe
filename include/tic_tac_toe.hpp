@@ -132,6 +132,12 @@ namespace tic_tac_toe
 					return row_winner;
 				}
 
+				auto diagonal_winner = check_for_diagonal_winner();
+				if(diagonal_winner != player::none)
+				{
+					return diagonal_winner;
+				}
+
 				return player::unknown;
 			}
 
@@ -273,6 +279,62 @@ namespace tic_tac_toe
 
 
 		private:
+
+			player top_right_to_bottom_left_winner() const noexcept
+			{
+				auto& first_field = grid(width() - 1,0);
+				if(first_field.owner() != player::none)
+				{
+					auto x = width() -1;
+					auto y = size_type{};
+					for(
+						;
+						x >= 0 && y < height();
+						--x, ++y)
+					{
+						if(first_field.owner() != grid(x,y).owner())
+						{
+							return player::none;
+						}
+					}
+				}
+				return first_field.owner();
+			}
+			player top_left_to_bottom_right_winner() const noexcept
+			{
+				auto& first_field = grid(0,0);
+				if(first_field.owner() != player::none)
+				{
+					auto x = size_type{};
+					auto y = size_type{};
+					for(
+						;
+						x < width() && y < height();
+						++x, ++y)
+					{
+						if(first_field.owner() != grid(x,y).owner())
+						{
+							return player::none;
+						}
+					}
+				}
+				return first_field.owner();
+			}
+
+			player check_for_diagonal_winner() const noexcept
+			{
+				auto winner = top_left_to_bottom_right_winner();
+				if(winner != player::none)
+				{
+					return winner;
+				}
+				winner = top_right_to_bottom_left_winner();
+				if(winner != player::none)
+				{
+					return winner;
+				}
+				return player::none;
+			}
 
 			template<
 				typename Iterator1,
